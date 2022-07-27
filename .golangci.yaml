@@ -1,0 +1,50 @@
+run:
+  timeout: 3m
+  go: "1.18"
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - exportloopref
+    - funlen
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - gomnd
+    - goprintffuncname
+    - gosec
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - nolintlint
+    - typecheck
+    - unconvert
+    - varcheck
+    - whitespace
+    - wsl
+    - revive
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/chiefcake/go-starter-kit
+  misspell:
+    locale: US
+  lll:
+    line-length: 150
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - dupl
+        - funlen

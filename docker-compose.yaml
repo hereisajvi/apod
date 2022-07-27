@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  go-starter-kit:
+    image: go-starter-kit:latest
+    container_name: go-starter-kit
+    restart: on-failure
