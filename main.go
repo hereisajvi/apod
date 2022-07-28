@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"context"
 
+	"github.com/chiefcake/apod/internal/app"
+)
+
+// @title APOD API
+// @version 1.0
+
+// @host localhost:8080
 func main() {
-	fmt.Println("Hello World!")
+	ctx := context.Background()
+
+	app.Run(ctx)
 }
