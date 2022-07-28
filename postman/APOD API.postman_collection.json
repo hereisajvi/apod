@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "0a0750a6-e051-4ca6-9cf3-5091d065985b",
+		"name": "APOD API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13432535"
+	},
+	"item": [
+		{
+			"name": "Get a picture of the day by a specific date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pictures/2022-07-28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pictures",
+						"2022-07-28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all stored pictures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pictures"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

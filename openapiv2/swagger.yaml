@@ -1,0 +1,80 @@
+definitions:
+  model.Picture:
+    properties:
+      copyright:
+        type: string
+      date:
+        type: string
+      explanation:
+        type: string
+      hdurl:
+        type: string
+      id:
+        type: string
+      media_type:
+        type: string
+      service_version:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+  status.ErrorResponse:
+    properties:
+      code:
+        type: integer
+      details:
+        items:
+          type: string
+        type: array
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  title: APOD API
+  version: "1.0"
+paths:
+  /api/v1/pictures:
+    get:
+      operationId: list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Picture'
+            type: array
+        "400":
+          description: Bad request error
+          schema:
+            $ref: '#/definitions/status.ErrorResponse'
+        "500":
+          description: Internal error
+          schema:
+            $ref: '#/definitions/status.ErrorResponse'
+      summary: Get all stored astronomy pictures
+  /api/v1/pictures/{date}:
+    get:
+      operationId: getByDate
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Picture'
+        "400":
+          description: Bad request error
+          schema:
+            $ref: '#/definitions/status.ErrorResponse'
+        "500":
+          description: Internal error
+          schema:
+            $ref: '#/definitions/status.ErrorResponse'
+      summary: Get an astronomy picture of the specific date
+swagger: "2.0"
