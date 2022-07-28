@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := local-run
 
-BINARY_NAME := go-starter-kit
+BINARY_NAME := apod
 
 .PHONY: lint
 lint:
@@ -29,3 +29,11 @@ build-docker-image:
 .PHONY: local-run
 local-run: build-docker-image
 	docker-compose up --force-recreate --remove-orphans
+
+.PHONY: openapiv2
+openapiv2:
+	swag init --output openapiv2 --outputTypes yaml
+
+.PHONY: generate
+generage:
+	go generate ./...

@@ -1,6 +1,27 @@
 version: "3.9"
 services:
-  go-starter-kit:
-    image: go-starter-kit:latest
-    container_name: go-starter-kit
+  apod:
+    image: apod:latest
+    container_name: apod
+    ports:
+      - 8080:8080
     restart: on-failure
+    env_file:
+      - local.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - local.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s  
