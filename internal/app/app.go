@@ -31,8 +31,7 @@ func RunWithConfig(ctx context.Context, cfg *config.Config) {
 
 	apodClient, err := apod.NewClient(cfg.APIKey)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatal(err)
 	}
 
 	pictureRepository := postgres.NewPictureRepository(pg)
@@ -67,8 +66,7 @@ func RunWithConfig(ctx context.Context, cfg *config.Config) {
 
 	err = server.Shutdown(ctx)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatal(err)
 	}
 }
 
